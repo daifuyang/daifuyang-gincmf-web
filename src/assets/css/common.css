@@ -1,9 +1,22 @@
 .settings-wrap {
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 30px;
-    position: absolute;
-    top: 0;
-    right: 0;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  position: absolute;
+  z-index: 19;
+  top: 0;
+  right: -40px;
+}
+
+@keyframes titleLine {
+  0%,
+  25% {
+    transform: translateX(-64px);
+  }
+  75%,
+  100% {
+    transform: translateX(376px);
+  }
 }

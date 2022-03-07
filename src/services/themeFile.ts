@@ -1,7 +1,40 @@
-import { ssrRequest } from '@/utils/request';
+import { request,authRequest } from '@/utils/request';
+
+/*
+ *@Author: frank
+ *@Date: 2022-01-20 20:57:09
+ *@Description: 获取所有模板数据
+*/
+
 export const getThemeFiles = (params = {}) => {
-  return ssrRequest(`/api/v1/app/portal/theme_files`, {
+  return request(`/api/v1/app/portal/theme_files`, {
     method: 'GET',
     params
+  });
+};
+
+/*
+ *@Author: frank
+ *@Date: 2022-01-20 20:57:28
+ *@Description: 获取单个模板文件
+*/
+
+export const getThemeFile = (params = {}) => {
+  return request(`/api/v1/app/portal/theme_file`, {
+    method: 'GET',
+    params
+  });
+};
+
+
+/*
+ *@Author: frank
+ *@Date: 2022-01-19 16:29:32
+ *@Description: admin 保存themeFile
+*/
+export const saveThemeFile = (id: number, data:any) => {
+  return authRequest(`/api/v1/admin/portal/theme_file/${id}`, {
+    method: 'post',
+    data,
   });
 };

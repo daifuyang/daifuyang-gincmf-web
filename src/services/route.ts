@@ -1,6 +1,6 @@
-import { ssrRequest } from '@/utils/request';
+import { request } from '@/utils/request';
 export const getRoutes = () => {
-  return ssrRequest(`/api/v1/app/route`, {
+  return request(`/api/v1/app/route`, {
     method: 'GET',
   });
 };

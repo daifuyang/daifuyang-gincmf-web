@@ -59,18 +59,78 @@
           margin-left: auto;
 
           .menuItem {
-            color: rgba(0, 0, 0, 0.85);
             min-width: 64px;
             height: 64px;
+            text-align: center;
             padding-right: 12px;
             padding-left: 12px;
             line-height: 64px;
+            border-top: 2px solid transparent;
+            border-bottom: 2px solid transparent;
+            transition: color .3s;
+            cursor: pointer;
+
+            &:hover {
+              border-top: 2px solid #108ee9;
+            }
+
+            a {
+              display: block;
+              color: rgba(0, 0, 0, .65);
+
+              &:hover {
+                color: #108ee9;
+              }
+            }
+
+            &.active {
+
+              border-top: 2px solid #108ee9;
+
+              a {
+                color: #108ee9;
+              }
+            }
+
           }
         }
 
       }
+    }
+
+    .login {
+      width: 100px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+
+      .loginInfo {
+        width: 100%;
+        cursor: pointer;
+
+        :global {
+          .ant-dropdown-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        .nickname {
+          margin-left: 10px;
+          color: #333;
+        }
+      }
+
 
     }
+
   }
 
+}
+
+.loginMenuItem {
+  display: block;
+  text-align: center;
 }

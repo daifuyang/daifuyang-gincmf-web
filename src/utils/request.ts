@@ -3,11 +3,9 @@
  * 更详细的 api 文档: https://github.com/umijs/umi-request
  */
 import { extend } from 'umi-request';
-import { notification } from 'antd';
-
-import { stringify } from 'querystring';
-
-import {history} from 'umi';
+import { notification, Result } from 'antd';
+import { isBrowser, useDispatch } from 'umi';
+import { setCookie, getCookie } from '@/utils/cookie';
 
 const codeMessage: any = {
   200: '服务器成功返回请求的数据。',
@@ -31,63 +29,37 @@ const codeMessage: any = {
  * 异常处理程序
  */
 const errorHandler = (error: { response: Response }): Response => {
-  console.log('error', error);
   const { response } = error;
   if (response && response.status) {
     const errorText = codeMessage[response.status] || response.statusText;
     const { status, url } = response;
-
-    notification.error({
-      message: `请求错误 ${status}: ${url}`,
-      description: errorText,
-    });
+    if (isBrowser()) {
+      notification.error({
+        message: `请求错误 ${status}: ${url}`,
+        description: errorText,
+      });
+    }
   } else if (!response) {
-    notification.error({
-      description: '您的网络发生异常，无法连接服务器',
-      message: '网络异常',
-    });
+    if (isBrowser()) {
+      notification.error({
+        description: '您的网络发生异常，无法连接服务器',
+        message: '网络异常',
+      });
+    }
   }
   return response;
 };
-
-
-export async function getRefresh(token: any) {
-  return request(
-    `/api/oauth/refresh?grant_type=refresh_token&refresh_token=${token.refresh_token}`,
-    {
-      method: 'post',
-    }
-  );
-}
 
 /**
  * 配置request请求时的默认参数
  */
 export const request = extend({
   errorHandler, // 默认错误处理
-  credentials: 'include', // 默认请求是否带上cookie
+  // credentials: 'include', // 默认请求是否带上cookie
   noToken: true,
 });
 
-export const authRequest = extend({
-  errorHandler, // 默认错误处理
-  credentials: 'include', // 默认请求是否带上cookie
-});
-
-export const ssrRequest = extend({
-  credentials: 'include', // 默认请求是否带上cookie
-});
-
-ssrRequest.interceptors.request.use((url, options) => {
-
-  const temp = { ...options };
-  let token: any = temp?.data?.token;
-
-  if (token) {
-    temp.headers = {
-      Authorization: `Bearer ${token}`,
-    };
-  }
+request.interceptors.request.use((url, options) => {
 
   const curUrl =
     url.indexOf('http') > -1 || url.indexOf('https') > -1
@@ -96,6 +68,44 @@ ssrRequest.interceptors.request.use((url, options) => {
 
   return {
     url: `${curUrl}`,
+    options: { ...options, interceptors: true },
+  };
+});
+
+export const authRequest = extend({
+  errorHandler, // 默认错误处理
+  // credentials: 'include', // 默认请求是否带上cookie
+});
+
+authRequest.interceptors.request.use((url, options) => {
+
+  const temp = { ...options };
+
+  if (isBrowser()) {
+    const tokenStr = localStorage.getItem('token')
+    if (tokenStr) {
+      const tokenObj = JSON.parse(tokenStr)
+      const token = tokenObj?.access_token
+      temp.headers = {
+        Authorization: `Bearer ${token}`,
+      };
+    }
+  }
+
+  return {
+    url,
     options: { ...temp, interceptors: true },
   };
+});
+
+authRequest.interceptors.response.use((response, options) => {
+  if (response.status === 401) {
+    if (isBrowser()) {
+      localStorage.removeItem('token')
+      // setTimeout(() => {
+      //   window.location.reload()
+      // }, 3000);
+    }
+  }
+  return response;
 });

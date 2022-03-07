@@ -1,3 +1,209 @@
 {
-    
+    "name": "首页",
+    "file": "index",
+    "type": "index",
+    "description": "首页模板文件",
+    "order": 5,
+    "more": {
+        "vars": {},
+        "widgets": {
+            "banner": {
+                "order": 1.0,
+                "title": "首页横幅",
+                "display": 1,
+                "vars": {
+                    "title": {
+                        "order": 1.0,
+                        "title": "主标题",
+                        "value": "GinCMF",
+                        "type": "text"
+                    },
+                    "sub_title": {
+                        "order": 2.0,
+                        "title": "副标题",
+                        "value": "一款基于GIN框架的开源内容管理框架，支持微服务，让WEB开发更快",
+                        "type": "textarea"
+                    },
+                    "btn_primary": {
+                        "order": 3.0,
+                        "title": "主按钮",
+                        "value": "快速上手",
+                        "href": "",
+                        "target": "_self",
+                        "type": "button"
+                    },
+                    "btn_ghost": {
+                        "order": 4.0,
+                        "title": "副按钮",
+                        "value": "在线演示",
+                        "href": "",
+                        "target": "_self",
+                        "type": "button"
+                    }
+                }
+            },
+            "feature": {
+                "order": 2.0,
+                "title": "特色模块",
+                "display": "1",
+                "vars": {
+                    "parallax": {
+                        "title": "背景文字",
+                        "value": "Feature",
+                        "type": "text",
+                        "order": 1.0
+                    },
+                    "grid": {
+                        "title": "特色图集",
+                        "value": [
+                            {
+                                "title": "现代框架",
+                                "desc": "前后端分离，API友好，SSR适配，SEO友好",
+                                "src": "https://gw.alipayobjects.com/zos/rmsportal/VriUmzNjDnjoFoFFZvuh.svg",
+                                "color": "#13C2C2",
+                                "shadowColor": "rgba(19,194,194,.12)"
+                            },
+                            {
+                                "title": "免费开源",
+                                "desc": "基于MIT协议开源，可商业使用，更自由",
+                                "src": "https://gw.alipayobjects.com/zos/rmsportal/smwQOoxCjXVbNAKMqvWk.svg",
+                                "color": "#2F54EB",
+                                "shadowColor": "rgba(47,84,235,.12)"
+                            },
+                            {
+                                "title": "权限管理",
+                                "desc": "内置RBAC权限管理，管理权限更自由",
+                                "src": "https://gw.alipayobjects.com/zos/rmsportal/hBbIHzUsSbSxrhoRFYzi.svg",
+                                "color": "#F5222D",
+                                "shadowColor": "rgba(245,34,45,.12)"
+                            },
+                            {
+                                "title": "微服务",
+                                "desc": "支持GRPC微服务，快速、高效",
+                                "src": "https://gw.alipayobjects.com/zos/rmsportal/hBbIHzUsSbSxrhoRFYzi.svg",
+                                "color": "#F5222D",
+                                "shadowColor": "rgba(245,34,45,.12)"
+                            },
+                            {
+                                "title": "丰富的生态",
+                                "desc": "应用市场让建站，商城，博客，小程序等一键搞定",
+                                "src": "https://gw.alipayobjects.com/zos/rmsportal/VriUmzNjDnjoFoFFZvuh.svg",
+                                "color": "#F5222D",
+                                "shadowColor": "rgba(245,34,45,.12)"
+                            },
+                            {
+                                "title": "社区氛围好",
+                                "desc": "开源互助，友爱共享。热心的小伙伴免费互助解决问题",
+                                "src": "https://gw.alipayobjects.com/zos/rmsportal/hBbIHzUsSbSxrhoRFYzi.svg",
+                                "color": "#F5222D",
+                                "shadowColor": "rgba(245,34,45,.12)"
+                            }
+                        ],
+                        "type": "array",
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "order": "1"
+                            },
+                            "desc": {
+                                "title": "描述",
+                                "value": "",
+                                "type": "textarea",
+                                "order": "2"
+                            },
+                            "src": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "order": "3"
+                            },
+                            "color": {
+                                "title": "颜色",
+                                "value": "",
+                                "type": "color",
+                                "order": "4"
+                            },
+                            "shadowColor": {
+                                "title": "阴影",
+                                "value": "",
+                                "type": "color",
+                                "order": "5"
+                            }
+                        },
+                        "order": 2.0
+                    }
+                }
+            },
+            "canDo": {
+                "order": 3.0,
+                "title": "GINCMF能做什么",
+                "display": "1",
+                "vars": {
+                    "grid": {
+                        "title": "GINCMF能做什么",
+                        "type": "array",
+                        "value": [
+                            {
+                                "title": "建站系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "微信管理系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "小程序系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "商城系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "CRM系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "ERP系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "社区系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "问答系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "视频管理系统",
+                                "src": ""
+                            },
+                            {
+                                "title": "各种行业应用",
+                                "src": ""
+                            }
+                        ],
+                        "item": {
+                            "title": {
+                                "title": "标题",
+                                "value": "",
+                                "type": "text",
+                                "order": "1"
+                            },
+                            "src": {
+                                "title": "图片",
+                                "value": "",
+                                "type": "image",
+                                "order": "3"
+                            }
+                        },
+                        "order": 1.0
+                    }
+                }
+            }
+        }
+    }
 }

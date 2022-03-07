@@ -1,74 +1,42 @@
 {
   "name": "公共头部内容",
   "file": "public/header",
+  "type": "public/header",
   "description": "公共头部内容",
   "is_public": 1,
   "order": 1.0,
   "more": {
     "vars": {
       "logo": {
+        "order": 1.0,
         "title": "站点logo",
-        "value": "logo url",
-        "type": "image",
+        "value": "GINCMF",
+        "type": "text",
         "tip": "站点logo不能为空"
       }
     },
     "widgets": {
       "navs": {
+        "order": 1.0,
         "title": "右侧导航",
         "display": 1,
         "vars": {
           "main": {
+            "order": 1.0,
             "title": "主导航",
             "value": [
               {
-                "title": "首页",
-                "link": ""
-              },
-              {
-                "title": "文档",
-                "link": ""
+                "id": 1,
+                "name": "首页",
+                "target": "_self",
+                "href": "/",
+                "href_type": 0,
+                "path": ""
               }
             ],
-            "type": "array",
-            "item": {
-              "title": {
-                "title": "标题",
-                "value": "",
-                "type": "text"
-              },
-              "link": {
-                "title": "跳转地址",
-                "value": "",
-                "type": "text"
-              }
-            }
-          },
-          "extra": {
-            "title": "导航详情",
-            "value": [
-              {
-                "title": "Search",
-                "link": ""
-              },
-              {
-                "title": "Send Inquiry",
-                "link": ""
-              }
-            ],
-            "type": "array",
-            "item": {
-              "title": {
-                "title": "标题",
-                "value": "",
-                "type": "text"
-              },
-              "link": {
-                "title": "跳转地址",
-                "value": "",
-                "type": "text"
-              }
-            }
+            "key": "main",
+            "navId": "",
+            "type": "nav"
           }
         }
       }

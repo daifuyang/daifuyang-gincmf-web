@@ -1,6 +1,7 @@
 {
   "name": "底部导航栏",
   "file": "public/footer",
+  "type":"public/footer",
   "description": "底部导航栏",
   "is_public": 1,
   "order": 1.0,
